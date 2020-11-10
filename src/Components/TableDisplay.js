@@ -1,29 +1,12 @@
 import React from 'react';
 import Row from './Row';
 import Table from 'react-bootstrap/Table';
-import './Table.css';
+import './TableDisplay.css';
 
-function TableComp(props) {
-  //   let count = -1;
+function TableDisplay(props) {
+  const row = [props.expenses];
 
-  //   const rowItems = props.expenses.map((expense) => {
-  //     count = count + 1;
-  //     return (
-  //       <Row
-  //         index={count}
-  //         key={count}
-  //         amount={expense[0]}
-  //         date={expense[1]}
-  //         merchant={expense[2]}
-  //         description={expense[3]}
-  //         removeExpense={props.removeExpense}
-  //       />
-  //     );
-  //   });
-
-  const rows = [];
-
-  const displayRows = rows.map((expense) => (
+  const displayRows = row.map((expense) => (
     <tr key={expense.id}>
       <td>{expense.amount}</td>
       <td>{expense.date}</td>
@@ -31,6 +14,7 @@ function TableComp(props) {
       <td>{expense.description}</td>
     </tr>
   ));
+
   return (
     <div className='table-container'>
       <Table striped bordered hover>
@@ -49,4 +33,4 @@ function TableComp(props) {
   );
 }
 
-export default TableComp;
+export default TableDisplay;

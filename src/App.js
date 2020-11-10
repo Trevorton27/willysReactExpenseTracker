@@ -1,6 +1,6 @@
 import './App.css';
 import Inputs from './Components/Inputs';
-import TableComp from './Components/Table';
+import TableDisplay from './Components/TableDisplay';
 import React, { Fragment } from 'react';
 import { Container } from 'react-bootstrap';
 
@@ -101,7 +101,7 @@ class App extends React.Component {
             addExpense={this.addExpense}
             handleChange={this.handleChange}
           />
-          <TableComp
+          <TableDisplay
             expenses={this.state.expenses}
             removeExpense={this.removeExpense}
           />
