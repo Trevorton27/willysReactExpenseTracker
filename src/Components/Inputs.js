@@ -4,11 +4,6 @@ import Button from 'react-bootstrap/Button';
 import './Inputs.css';
 
 const Inputs = (props) => {
-  //   let expenseAdded = (e) => {
-  //     e.preventDefault();
-
-  //     props.expenses.addExpense(amount, date, merchant, description);
-  //   };
   let clearStorage = () => {
     localStorage.clear();
   };

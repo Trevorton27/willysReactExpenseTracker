@@ -14,6 +14,7 @@ class App extends React.Component {
       merchant: '',
       description: ''
     };
+
     this.addExpense = this.addExpense.bind(this);
     this.removeExpense = this.removeExpense.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -29,32 +30,61 @@ class App extends React.Component {
 
   addExpense(e) {
     e.preventDefault();
-
-    this.setState((prevState) => {
-      //add to the array without mutating the state
-      let newExpense = [
-        this.state.amount,
-        this.state.date,
-        this.state.merchant,
-        this.state.description
-      ];
-
-      localStorage.setItem('expensesArray', JSON.stringify([newExpense]));
-      return {
-        expenses: [...prevState.expenses, newExpense]
-      };
-    });
+    const newExpense = {
+      id: Math.random(),
+      amount: this.state.amount,
+      date: this.state.date,
+      merchant: this.state.merchant,
+      description: this.state.description
+    };
+    if (this.state.expenses > 0) {
+      this.setState(
+        {
+          expenses: [...this.state.expenses, newExpense],
+          amount: '',
+          date: '',
+          merchant: '',
+          description: ''
+        },
+        () => {
+          localStorage.setItem(
+            'expensesArray',
+            JSON.stringify(this.state.expenses)
+          );
+        }
+      );
+    } else {
+      this.setState(
+        {
+          expenses: [newExpense],
+          amount: '',
+          date: '',
+          merchant: '',
+          description: ''
+        },
+        () => {
+          localStorage.setItem(
+            'expensesArray',
+            JSON.stringify(this.state.expenses)
+          );
+        }
+      );
+    }
   }
 
-  removeExpense(key) {
-    this.setState((prevState) => {
-      let expenses = [...prevState.expenses];
-      expenses.splice(key, 1);
-      localStorage.setItem('expensesArray', JSON.stringify(expenses));
-      return {
+  removeExpense(id) {
+    const expenses = this.state.expenses.filter((expense) => expense.id !== id);
+    this.setState(
+      {
         expenses: expenses
-      };
-    });
+      },
+      () => {
+        localStorage.setItem(
+          'expensesArray',
+          JSON.stringify(this.state.expenses)
+        );
+      }
+    );
   }
 
   handleChange(e) {
