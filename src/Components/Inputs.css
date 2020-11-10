@@ -1,15 +1,20 @@
-.inputs-container{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px;
+.inputs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-top: 50px;
 }
 
-button{
-	height: 3rem;
+button {
+  height: 3rem;
 }
 
-.btn-warning{
-	margin-left: 10px;
+.btn-warning {
+  margin-left: 10px;
 }
 
+.submitButton:focus {
+  outline: none;
+  box-shadow: none;
+}
