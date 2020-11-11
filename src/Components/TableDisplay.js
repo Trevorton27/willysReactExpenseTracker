@@ -1,20 +1,22 @@
-import React from 'react';
-import Row from './Row';
+import React, { Button } from 'react';
 import Table from 'react-bootstrap/Table';
 import './TableDisplay.css';
 
 function TableDisplay(props) {
-  // const row = [props.expenses];
-  // console.log('row:', row);
-  console.log(props);
-  // const displayRows = row.map((expense) => (
-  //   <tr key={expense.id}>
-  //     <td>{expense.amount}</td>
-  //     <td>{expense.date}</td>
-  //     <td>{expense.merchant}</td>
-  //     <td>{expense.description}</td>
-  //   </tr>
-  // ));
+  console.log('props: ', props);
+  const displayRows = props.expenses.map((expense) => (
+    <tr key={expense.id}>
+      <td>{expense.amount}</td>
+      <td>{expense.date}</td>
+      <td>{expense.merchant}</td>
+      <td>{expense.description}</td>
+      <td>
+        <Button className='btn btn-danger' onClick={props.removeExpense}>
+          X
+        </Button>
+      </td>
+    </tr>
+  ));
 
   return (
     <div className='table-container'>
@@ -28,7 +30,7 @@ function TableDisplay(props) {
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>{}</tbody>
+        <tbody>{displayRows}</tbody>
       </Table>
     </div>
   );
