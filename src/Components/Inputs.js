@@ -18,7 +18,7 @@ const Inputs = (props) => {
             step='0.1'
             type='number'
             name='amount'
-            value={props.expenses.amount}
+            value={props.amount}
             onChange={props.handleChange}
             required
           />
@@ -31,7 +31,7 @@ const Inputs = (props) => {
             id='date'
             type='date'
             name='date'
-            value={props.expenses.date}
+            value={props.date}
             onChange={props.handleChange}
             required
           />
@@ -44,7 +44,7 @@ const Inputs = (props) => {
             id='merchant'
             type='text'
             name='merchant'
-            value={props.expenses.merchant}
+            value={props.merchant}
             onChange={props.handleChange}
             required
           />
@@ -57,7 +57,7 @@ const Inputs = (props) => {
             id='description'
             type='text'
             name='description'
-            value={props.expenses.description}
+            value={props.description}
             onChange={props.handleChange}
             required
           />

@@ -8,11 +8,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      expenses: [],
-      amount: '',
-      date: '',
-      merchant: '',
-      description: ''
+      expenses: []
     };
 
     this.addExpense = this.addExpense.bind(this);
@@ -40,11 +36,7 @@ class App extends React.Component {
     if (this.state.expenses > 0) {
       this.setState(
         {
-          expenses: [...this.state.expenses, newExpense],
-          amount: '',
-          date: '',
-          merchant: '',
-          description: ''
+          expenses: [...this.state.expenses, newExpense]
         },
         () => {
           localStorage.setItem(
@@ -56,11 +48,7 @@ class App extends React.Component {
     } else {
       this.setState(
         {
-          expenses: [newExpense],
-          amount: '',
-          date: '',
-          merchant: '',
-          description: ''
+          expenses: [newExpense]
         },
         () => {
           localStorage.setItem(

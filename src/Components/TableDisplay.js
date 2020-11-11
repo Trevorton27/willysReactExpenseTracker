@@ -4,16 +4,17 @@ import Table from 'react-bootstrap/Table';
 import './TableDisplay.css';
 
 function TableDisplay(props) {
-  const row = [props.expenses];
-
-  const displayRows = row.map((expense) => (
-    <tr key={expense.id}>
-      <td>{expense.amount}</td>
-      <td>{expense.date}</td>
-      <td>{expense.merchant}</td>
-      <td>{expense.description}</td>
-    </tr>
-  ));
+  // const row = [props.expenses];
+  // console.log('row:', row);
+  console.log(props);
+  // const displayRows = row.map((expense) => (
+  //   <tr key={expense.id}>
+  //     <td>{expense.amount}</td>
+  //     <td>{expense.date}</td>
+  //     <td>{expense.merchant}</td>
+  //     <td>{expense.description}</td>
+  //   </tr>
+  // ));
 
   return (
     <div className='table-container'>
@@ -27,7 +28,7 @@ function TableDisplay(props) {
             <th>Remove</th>
           </tr>
         </thead>
-        <tbody>{displayRows}</tbody>
+        <tbody>{}</tbody>
       </Table>
     </div>
   );
