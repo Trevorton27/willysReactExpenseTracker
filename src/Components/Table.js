@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table';
+import { Button, Table } from 'react-bootstrap';
 import './Table.css';
 
 function TableDisplay(props) {
@@ -16,12 +16,12 @@ function TableDisplay(props) {
         <td>{expense.merchant}</td>
         <td>{expense.description}</td>
         <td>
-          <button
+          <Button
             className='btn btn-danger'
-            onClick={(e) => props.handleDelete(expense.id)}
+            onClick={(e) => props.removeExpense(expense.id)}
           >
             Delete
-          </button>
+          </Button>
         </td>
       </tr>
     );

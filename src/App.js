@@ -1,18 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import Inputs from './Components/Inputs';
 import TableDisplay from './Components/Table';
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      expenses: JSON.parse(localStorage.getItem('expensesArray')) || [],
-      amount: '',
-      date: '',
-      merchant: '',
-      description: ''
+      expenses: []
     };
 
     this.addExpense = this.addExpense.bind(this);
@@ -21,11 +17,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const storage = JSON.parse(localStorage.getItem('expensesArray'));
-    console.log(storage);
-    if (storage !== null) {
-      this.setState({ expenses: storage });
+    localStorage.getItem('expenseArray') &&
+      this.setState({
+        expenses: JSON.parse(localStorage.getItem('expenseArray'))
+      });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.expenses.length !== prevState.expenses.length) {
+      localStorage.setItem('expenseArray', JSON.stringify(this.state.expenses));
     }
+
+    console.log('expenses: ', this.state.expenses);
   }
 
   addExpense(event) {
@@ -39,18 +42,11 @@ class App extends React.Component {
       description: this.state.description
     };
 
-    localStorage.setItem('expensesArray', JSON.stringify(newExpense));
-
     this.setState({
-      expenses:
-        this.state.expenses.length >= 1
-          ? [...this.state.expenses, newExpense]
-          : [newExpense],
-      amount: '',
-      date: '',
-      merchant: '',
-      description: ''
+      expenses: [...this.state.expenses, newExpense]
     });
+
+    event.target.reset();
   }
 
   removeExpense(expenseID) {
@@ -68,13 +64,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Inputs addExpense={this.addExpense} handleChange={this.handleChange} />
         <TableDisplay
           expenses={this.state.expenses}
           removeExpense={this.removeExpense}
         />
-      </div>
+      </Container>
     );
   }
 }
